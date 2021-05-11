@@ -3,11 +3,11 @@ module SwaggerUI
 using JSON
 using Genie, Genie.Router
 
-include("Setup.jl")
+# include("Setup.jl")
 include("Options.jl")
 include("Builders.jl")
 
-setup()
+# setup()
 
 const JS_PATH = joinpath(dirname(dirname(@__FILE__)), "dist")
 export Options, render_swagger, serve_assets, build_js_string, build_html_string

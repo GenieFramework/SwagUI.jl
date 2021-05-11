@@ -24,13 +24,13 @@ function setup()
             folder = "swagger-ui"
             run(pipeline(`7z x $(output) -so`, `7z x -aoa -si -ttar -o $(folder)`))
             cd(folder)
-            mv(js, root_dir)
+            run(`move $(js) $(root_dir)`)
             cd("..")
         else
             pack_root = replace(read(pipeline(`tar -tf $(output)`, `head -1`, `sed -e 's/\/.*//'`), String), "\n" => "")
             dist = joinpath(pack_root, js)
             run(`tar -xf $(output) $(dist)`)
-            mv(dist, root_dir)
+            run(`mv $(dist) $(root_dir)`)
         end
 
         # clean up
