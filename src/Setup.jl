@@ -19,7 +19,10 @@ function setup()
         # download swagger-ui-dist, and move the dist folder to root
         Downloads.download(url, joinpath(tmp, output))
         cd(tmp)
-        pack_root = replace(read(pipeline(`tar -tf $(output)`, `head -1`, `sed -e 's/\/.*//'`), String), "\n" => "")
+        
+        # pack_root = replace(read(pipeline(`tar -tf $(output)`, `head -1`, `sed -e 's/\/.*//'`), String), "\n" => "")
+        pack_root=replace(split(read(`tar -tf $(output)`, String), "\n")[1], "/" => "")
+
         dist = joinpath(pack_root, js)
         run(`tar -xf $(output) $(dist)`)
         run(`mv $(dist) $(root_dir)`)
