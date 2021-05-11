@@ -19,14 +19,20 @@ function setup()
         # download swagger-ui-dist, and move the dist folder to root
         Downloads.download(url, joinpath(tmp, output))
         cd(tmp)
-        
-        # pack_root = replace(read(pipeline(`tar -tf $(output)`, `head -1`, `sed -e 's/\/.*//'`), String), "\n" => "")
-        pack_root=replace(split(read(`tar -tf $(output)`, String), "\n")[1], "/" => "")
 
-        dist = joinpath(pack_root, js)
-        run(`tar -xf $(output) $(dist)`)
-        run(`mv $(dist) $(root_dir)`)
-        
+        if Sys.iswindows()
+            folder = "swagger-ui"
+            run(pipeline(`7z x $(output) -so`, `7z x -aoa -si -ttar -o $(folder)`))
+            cd(folder)
+            mv(js, root_dir)
+            cd("..")
+        else
+            pack_root = replace(read(pipeline(`tar -tf $(output)`, `head -1`, `sed -e 's/\/.*//'`), String), "\n" => "")
+            dist = joinpath(pack_root, js)
+            run(`tar -xf $(output) $(dist)`)
+            mv(dist, root_dir)
+        end
+
         # clean up
         cd(curr_dir)
         run(`rm -rf $(tmp)`)
