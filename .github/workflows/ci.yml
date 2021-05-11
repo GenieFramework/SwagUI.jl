@@ -10,7 +10,6 @@ jobs:
       matrix:
         version:
           - '1.5'
-          - 'nightly'
         os: [ubuntu-latest, windows-latest, macOS-latest]
         arch: [x64, x86]
         exclude:
