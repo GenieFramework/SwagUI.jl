@@ -1,6 +1,10 @@
 const DEFAULT_FAVICON = "<link rel='icon' type='image/png' href='./favicon-16x16.png' sizes='16x16' /><link rel='icon' type='image/png' href='./favicon-32x32.png' sizes='32x32' />"
 const DEFAULT_TITLE = "Swagger UI"
 
+"""
+    mutable struct Options
+
+"""
 mutable struct Options
     show_explorer::Bool
     custom_js::String
