@@ -7,6 +7,14 @@ Inspired by [swagger-ui-express](https://github.com/scottie1984/swagger-ui-expre
 
 Pre-built [swagger-ui](https://github.com/swagger-api/swagger-ui/tree/master/dist) is used. Because swagger-ui is implemented in Node.js, all pre-built files and assets are included in the [dist](dist) folder for serving. (Open an issue if there are better ways to do this.)
 
+## Installation
+
+The package hasn't been published to [General](https://github.com/JuliaRegistries/General) yet, so it can be added only through the GitHub. The following commands explains the process.
+
+```julia
+julia> ]
+pkg> add https://github.com/jiachengzhang1/SwaggerUI
+```
 ## Usage
 
 Genie simple setup
@@ -32,21 +40,19 @@ using JSON
 using SwaggerUI
 using SwaggerMarkdown
 
-swagger_document = JSON.parsefile("./swagger.json")
-
 @swagger """
-/:
+/doge:
   get:
-    description: Hello World!
+    description: Doge to the moon!
     responses:
       '200':
-        description: Returns a mysterious string.
+        description: Doge to the moon!!.
 """
-route("/") do 
-    "Hello World!"
+route("/doge") do 
+    JSON.json("Doge to the moon!!")
 end
 
-# build swagger document from markdown
+# build a swagger document from markdown
 info = Dict{String, Any}()
 info["title"] = "Swagger Petstore"
 info["version"] = "1.0.5"
@@ -56,6 +62,8 @@ swagger_document = build(openApi)
 route("/docs") do 
     render_swagger(swagger_document)
 end
+
+up(8001, async = false)
 ```
 
 [SwaggerMarkdown](https://github.com/jiachengzhang1/SwaggerMarkdown) builds the swagger document from markdown comments in the code. It returns a `swagger_document::Dict{String, Any}` that can be used by `SwaggerUI.render_swagger` to render the API documentation as Swagger's fashion.
@@ -97,7 +105,8 @@ options = Options()
 options.swagger_options["url"] = "https://petstore.swagger.io/v2/swagger.json"
 
 route("/docs") do 
-    # if swagger_options["url"] or swagger_options["urls"] is set, swagger_document is not needed
+    # if swagger_options["url"] or swagger_options["urls"] is set,
+    # swagger_document is not needed
     render_swagger(nothing, options=options)
 end
 ```

@@ -1,4 +1,7 @@
 using Downloads
+using Tar
+
+# TODO: make it compatible with Windows, or find a better way to pull pre-built files
 
 function setup()
     tmp = "tmp"
