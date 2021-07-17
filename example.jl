@@ -1,7 +1,7 @@
 using Genie, Genie.Router
 using Genie.Renderer, Genie.Renderer.Html, Genie.Renderer.Json
 using JSON
-using SwaggerUI
+using SwagUI
 
 swagger_document = JSON.parsefile("./swagger.json")
 

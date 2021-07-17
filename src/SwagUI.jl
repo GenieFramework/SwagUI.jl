@@ -1,4 +1,4 @@
-module SwaggerUI
+module SwagUI
 
 using JSON
 using Genie, Genie.Router
