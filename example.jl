@@ -18,16 +18,16 @@ push!(urls, url2)
 
 options = Options()
 # options.custom_css = ".swagger-ui .topbar { display: none }"
-options.show_explorer = false
+options.show_explorer = true
 
 # options.swagger_options["validatorUrl"] = nothing
-# options.swagger_options["url"] = "https://petstore.swagger.io/v2/swagger.json"
+options.swagger_options["url"] = "https://petstore.swagger.io/v2/swagger.json"
 # options.swagger_options["urls"] = urls
 
 
 route("/docs") do 
-    # render_swagger(nothing, options=options)
-    render_swagger(swagger_document, options=options)
+    render_swagger(nothing, options=options)
+    # render_swagger(swagger_document, options=options)
 end
 
 up(8001, async = false)
