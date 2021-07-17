@@ -1,4 +1,4 @@
-using SwaggerUI
+using SwagUI
 using Test
 
 include("app.jl")
