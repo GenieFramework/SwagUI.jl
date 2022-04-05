@@ -1,4 +1,9 @@
 
+const SWAGGER_UI_BUNDLE_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.9.1/swagger-ui-bundle.js"
+const SWAGGER_UI_STANDALONE_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.9.1/swagger-ui-standalone-preset.js"
+const SWAGGER_UI_CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.9.1/swagger-ui.css"
+
+
 function build_js_string(options::Options, swagger_doc::Union{Dict{String, Any}, Nothing})::String
     swagger_options = _options_to_json(options, swagger_doc)
     return """
@@ -61,7 +66,7 @@ function build_html_string(options::Options, js_string::String)::String
         <head>
             <meta charset="UTF-8">
             <title>$(title)</title>
-            <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
+            <link rel="stylesheet" type="text/css" href="$(SWAGGER_UI_CSS_URL)" />
             $(favicon)
             $(script)
             <style>
@@ -91,8 +96,8 @@ function build_html_string(options::Options, js_string::String)::String
         </head>
         <body>
             <div id="swagger-ui"></div>
-            <script src="./swagger-ui-bundle.js" charset="UTF-8"></script>
-            <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+            <script src="$(SWAGGER_UI_BUNDLE_JS_URL)" charset="UTF-8"></script>
+            <script src="$(SWAGGER_UI_STANDALONE_JS_URL)" charset="UTF-8"></script>
             <script>$(js_string)</script>
             $(stylesheet)
         </body>

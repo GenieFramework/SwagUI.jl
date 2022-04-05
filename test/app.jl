@@ -9,6 +9,18 @@ const BASE_URL = "$PROTOCAL://$HOST:$PORT"
 const ASSETS_PATH = joinpath(dirname(dirname(@__FILE__)), "test", "assets")
 const DEFAULT_SWAGGER_JSON = "https://petstore.swagger.io/v2/swagger.json"
 
+function serve_assets(path::String; excludes::Array{String, 1}=Array{String, 1}())
+    for (root, _, files) in walkdir(path)
+        for file in files
+            if !(file in excludes)
+                route(file) do 
+                    serve_static_file(file, root=root)
+                end
+            end
+        end
+    end
+end
+
 serve_assets(ASSETS_PATH)
 Genie.AppServer.startup(PORT, HOST; open_browser = false, verbose = true)
 
