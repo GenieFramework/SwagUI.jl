@@ -1,7 +1,6 @@
 module SwagUI
 
 using JSON
-using Genie, Genie.Router
 
 include("Options.jl")
 include("Builders.jl")
