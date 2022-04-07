@@ -14,7 +14,7 @@ function serve_assets(path::String; excludes::Array{String, 1}=Array{String, 1}(
         for file in files
             if !(file in excludes)
                 route(file) do 
-                    serve_static_file(file, root=root)
+                    open(read, joinpath(root, file)) |> String
                 end
             end
         end
@@ -22,7 +22,7 @@ function serve_assets(path::String; excludes::Array{String, 1}=Array{String, 1}(
 end
 
 serve_assets(ASSETS_PATH)
-Genie.AppServer.startup(PORT, HOST; open_browser = false, verbose = true)
+Genie.AppServer.startup(PORT, HOST; open_browser = false, verbose = true, async = true)
 
 # basic settings
 swagger_document = JSON.parsefile(joinpath(ASSETS_PATH, "swagger.json"))
