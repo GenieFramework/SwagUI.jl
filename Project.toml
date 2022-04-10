@@ -1,5 +1,6 @@
 name = "SwagUI"
 uuid = "bf05d729-34b2-4f1f-a2f1-2452bece7ebc"
+repo = "https://github.com/GenieFramework/SwagUI.jl.git"
 authors = ["Jiacheng Zhang <zhangjiacheng54@gmail.com>"]
 version = "0.9.1"
 
