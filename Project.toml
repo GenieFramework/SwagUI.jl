@@ -1,10 +1,9 @@
 name = "SwagUI"
 uuid = "bf05d729-34b2-4f1f-a2f1-2452bece7ebc"
 authors = ["Jiacheng Zhang <zhangjiacheng54@gmail.com>"]
-version = "0.9.0"
+version = "0.9.1"
 
 [deps]
-Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
@@ -12,5 +11,10 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 [compat]
 julia = "1.5, 1.6"
 JSON = "0.21.1"
-Genie = "1"
 HTTP = "0.8, 0.9"
+
+[extras]
+Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
+
+[targets]
+test = ["Genie"]
