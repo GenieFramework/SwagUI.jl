@@ -9,11 +9,9 @@ Pre-built [swagger-ui](https://github.com/swagger-api/swagger-ui/tree/master/dis
 
 ## Installation
 
-The package hasn't been published to [General](https://github.com/JuliaRegistries/General) yet, so it can be added only through the GitHub. The following commands explain the process.
-
 ```julia
 julia> ]
-pkg> add https://github.com/jiachengzhang1/SwaggerUI
+pkg> add SwaggerUI
 ```
 ## Usage
 
