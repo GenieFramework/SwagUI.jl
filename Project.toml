@@ -1,7 +1,7 @@
 name = "SwagUI"
 uuid = "bf05d729-34b2-4f1f-a2f1-2452bece7ebc"
-repo = "https://github.com/GenieFramework/SwagUI.jl.git"
 authors = ["Jiacheng Zhang <zhangjiacheng54@gmail.com>"]
+repo = "https://github.com/GenieFramework/SwagUI.jl.git"
 version = "0.10.0"
 
 [deps]
@@ -10,9 +10,9 @@ JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-julia = "1.5, 1.6"
-JSON = "0.21.1"
 HTTP = "0.8, 0.9, 1"
+JSON = "0.21.1"
+julia = "1.5, 1.6"
 
 [extras]
 Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"

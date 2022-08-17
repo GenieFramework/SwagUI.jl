@@ -13,7 +13,7 @@ function serve_assets(path::String; excludes::Array{String, 1}=Array{String, 1}(
     for (root, _, files) in walkdir(path)
         for file in files
             if !(file in excludes)
-                route(file) do 
+                route(file) do
                     open(read, joinpath(root, file)) |> String
                 end
             end
@@ -22,7 +22,7 @@ function serve_assets(path::String; excludes::Array{String, 1}=Array{String, 1}(
 end
 
 serve_assets(ASSETS_PATH)
-Genie.AppServer.startup(PORT, HOST; open_browser = false, verbose = true, async = true)
+up(PORT, HOST; open_browser = false, verbose = true, async = true)
 
 # basic settings
 swagger_document = JSON.parsefile(joinpath(ASSETS_PATH, "swagger.json"))
@@ -88,7 +88,7 @@ end
 
     r = HTTP.request("GET", "$BASE_URL/$route_name")
     html_string = replace(String(r.body), "\n" => "")
-    
+
     @test r.status == 200
     @test occursin(css_string, html_string)
     @test occursin("<link rel='stylesheet' type='text/css' href=$(stylesheet_path) />", html_string)
