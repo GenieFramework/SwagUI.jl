@@ -11,7 +11,7 @@ Pre-built [swagger-ui](https://github.com/swagger-api/swagger-ui/tree/master/dis
 
 ```julia
 julia> ]
-pkg> add SwaggerUI
+pkg> add SwagUI
 ```
 ## Usage
 
@@ -20,7 +20,7 @@ Genie simple setup
 ```julia
 using Genie, Genie.Router
 using JSON
-using SwaggerUI
+using SwagUI
 
 # use a swagger json from the local machine
 swagger_document = JSON.parsefile("./swagger.json")
@@ -30,12 +30,12 @@ route("/docs") do
 end
 ```
 
-### Inegrate with [Swagger Markdown](https://github.com/jiachengzhang1/SwaggerMarkdown)
+### Inegrate with [Swagger Markdown](https://github.com/GenieFramework/SwaggerMarkdown.jl)
 
 ```julia
 using Genie, Genie.Router
 using JSON
-using SwaggerUI
+using SwagUI
 using SwaggerMarkdown
 
 @swagger """
@@ -76,7 +76,7 @@ The explorer can be turned off through setting the `Options.show_explorer` to `f
 ```julia
 using Genie, Genie.Router
 using JSON
-using SwaggerUI
+using SwagUI
 
 swagger_document = JSON.parsefile("./swagger.json")
 
@@ -96,7 +96,7 @@ Swagger UI can be configured by setting `Options.swagger_options::Dict{String, A
 ```julia
 using Genie, Genie.Router
 using JSON
-using SwaggerUI
+using SwagUI
 
 # set the URL pointing to API definition
 options = Options()
@@ -116,7 +116,7 @@ Set `Options.custom_css` to a custom CSS as `String`.
 ```julia
 using Genie, Genie.Router
 using JSON
-using SwaggerUI
+using SwagUI
 
 swagger_document = JSON.parsefile("./swagger.json")
 
